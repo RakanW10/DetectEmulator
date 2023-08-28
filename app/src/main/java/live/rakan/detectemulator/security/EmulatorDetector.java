@@ -56,7 +56,7 @@ public class EmulatorDetector {
                 || Build.FINGERPRINT.startsWith("generic")
                 || Build.FINGERPRINT.startsWith("unknown")
                 || Build.HARDWARE.contains("goldfish")
-                || Build.HARDWARE.contains("ranchu")
+                || Build.HARDWARE.contains("ranchu") // Found
                 || Build.MODEL.contains("google_sdk")
                 || Build.MODEL.contains("Emulator")
                 || Build.MODEL.contains("Android SDK built for x86")
@@ -70,7 +70,6 @@ public class EmulatorDetector {
                 || Build.PRODUCT.contains("emulator")
                 || Build.PRODUCT.contains("simulator");
 
-        // Logging all checks using Log.d
         LogCheck("Brand and Device check", Build.BRAND,Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"));
         LogCheck("Fingerprint check (generic)", Build.FINGERPRINT, Build.FINGERPRINT.startsWith("generic"));
         LogCheck("Fingerprint check (unknown)", Build.BRAND, Build.FINGERPRINT.startsWith("unknown"));
@@ -89,13 +88,12 @@ public class EmulatorDetector {
         LogCheck("Product check (emulator)", Build.PRODUCT, Build.PRODUCT.contains("emulator"));
         LogCheck("Product check (simulator)",  Build.PRODUCT, Build.PRODUCT.contains("simulator"));
 
-        // Log the final result
         Log.d("EmulatorCheck", "Final result: " + result);
 
         return result;
 
         // goldFish
-        // https://android.googlesource.com/platform/external/qemu/+/emu-master-dev/android/docs/GOLDFISH-VIRTUAL-HARDWARE.TXT
+            // https://android.googlesource.com/platform/external/qemu/+/emu-master-dev/android/docs/GOLDFISH-VIRTUAL-HARDWARE.TXT
         //
     }
     private static  void LogCheck(String checkName,String content, boolean checkResult) {

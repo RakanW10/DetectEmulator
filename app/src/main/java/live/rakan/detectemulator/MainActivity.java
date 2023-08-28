@@ -28,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
        mainButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Log.d("checkEmulator",EmulatorDetector.isEmulator()+" ");
+               detectEmulator1();
+//               test_syscalls();
            }
        });
     }
 
 
     public native void test_syscalls();
-
-
+    public native int detectEmulator1();
 
 }
